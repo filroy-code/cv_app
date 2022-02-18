@@ -4,6 +4,7 @@ import EducationInfo from './components/EducationInfo'
 import ExperienceInfo from './components/ExperienceInfo'
 import BasicInfoOutput from './components/BasicInfoOutput'
 import EducationInfoOutput from './components/EducationInfoOutput'
+import ExperienceInfoOutput from './components/ExperienceInfoOutput'
 import React from 'react'
 import { nanoid } from 'nanoid'
 
@@ -13,12 +14,14 @@ function App() {
   const [personInfo, setPersonInfo] = React.useState({
     firstName: "",
     lastName: "",
+    phoneNumber: "",
     email: ""
 })
 
   const [formStatus, setFormStatus] = React.useState({
       firstName: "",
       lastName: "",
+      phoneNumber: "",
       email: ""
   })
 
@@ -128,6 +131,7 @@ function App() {
           <div className='hl' />
           {submitted ? <BasicInfoOutput personInfo={personInfo} /> : null }
           <EducationInfoOutput educationInfo={educationInfo} />
+          <ExperienceInfoOutput experienceInfo={experienceInfo} />
         </div>
     </div>
   );

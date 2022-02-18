@@ -36,7 +36,7 @@ export default function ExperienceInfo(props) {
                     <div>
                     <label htmlFor="dateFinished">Date Finished: </label>
                     <input  type="date"
-                        name="dateFinished"
+                        name="workDateFinished"
                         onChange={props.changeHandler}
                         placeholder="Date Finished"
                         value={props.experienceFormStatus.dateFinished.value}
