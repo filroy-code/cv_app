@@ -16,10 +16,10 @@ export default function EducationInfoOutput(props) {
     })} */
     const educationList = props.educationInfo.map(x => {
         return(
-            <div className="schoolEntry" key={x.id}>
+            <div className="schoolEntry" key={x.id} id={x.id}>
                 <div className="icons">
-                <EditIcon fontSize="small" className="icon" onClick={props.editEntry}/>
-                <DeleteIcon fontSize="small" className="icon" onClick={props.editEntry}/>
+                <button onClick={props.editEntry}><EditIcon fontSize="small" className="icon" /></button>
+                <button onClick={props.deleteEntry}><DeleteIcon fontSize="small" className="icon"/></button>
                 </div>
                 <h3>{x.school}</h3>
                 <h4>{x.diploma}</h4>

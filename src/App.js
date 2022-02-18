@@ -107,8 +107,16 @@ function App() {
   }
 
   //icon functions
+  function deleteEntry(event) {
+    let targetBox = event.target.parentElement.parentElement.id
+    let filteredEducation = educationInfo.filter(item => item.id !== targetBox)
+    setEducationInfo(filteredEducation)
+  }
+
   function editEntry(event) {
-    console.log(event.target.value)
+    let targetBox = event.target.parentElement.parentElement.id
+    let filteredEducation = educationInfo.filter(item => item.id !== targetBox)
+    console.log(filteredEducation)
   }
 
   return (
@@ -136,6 +144,7 @@ function App() {
           {submitted ? <BasicInfoOutput personInfo={personInfo} /> : null }
           <EducationInfoOutput 
             educationInfo={educationInfo}
+            deleteEntry={deleteEntry}
             editEntry={editEntry}
           />
           <ExperienceInfoOutput experienceInfo={experienceInfo} />

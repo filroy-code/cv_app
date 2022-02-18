@@ -75,8 +75,13 @@ h1 {
   gap: 10px;
 }
 
-.icon:hover {
-  color: rgba(145, 141, 141, 0.979)
+.icon {
+  pointer-events: none;
+}
+
+.disabled {
+  filter:brightness(0.8);
+  background-color: rgba(0, 0, 0, 0.295)
 }
 
 .schoolEntry:hover {
@@ -110,6 +115,7 @@ h1 {
 .educationInfoOutput {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 textarea {
