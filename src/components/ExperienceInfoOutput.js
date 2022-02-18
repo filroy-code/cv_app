@@ -1,4 +1,6 @@
 import React from "react"
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 export default function ExperienceInfoOutput(props) {
 
@@ -15,8 +17,16 @@ export default function ExperienceInfoOutput(props) {
     const experienceList = props.experienceInfo.map(x => {
         return(
             <div className="experienceEntry" key={x.id}>
-                <h3>{x.employer} - {x.jobTitle}</h3>
-                <h5>{x.workDateStarted} - {x.workDateFinished}</h5>
+                <div className="experienceGrouperMain">
+                    <div>
+                        <h3>{x.employer} - {x.jobTitle}</h3>
+                        <h4>{x.workDateStarted} - {x.workDateFinished}</h4>
+                    </div>
+                    <div className="experienceGrouperIcons">
+                        <EditIcon fontSize="small" className="icon" onClick={console.log("hello")}/>
+                        <DeleteIcon fontSize="small" className="icon" onClick={console.log("hello")}/>
+                    </div>
+                </div>
                 <p>{x.description}</p>
             </div>
         )

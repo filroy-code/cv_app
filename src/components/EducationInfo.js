@@ -44,8 +44,9 @@ export default function EducationInfo(props) {
                         value={props.edFormStatus.diploma.value}
                 />
                 <br /><br />
-                <button>{"Add Education"}</button>
             </form>
+            <div />
+            <button onClick={props.submitHandler} className="submitButton">{"Add Education"}</button>
         </div>
     )
 }

@@ -8,6 +8,7 @@ import ExperienceInfoOutput from './components/ExperienceInfoOutput'
 import React from 'react'
 import { nanoid } from 'nanoid'
 
+
 function App() {
 
 //basic info state and functions
@@ -105,6 +106,11 @@ function App() {
   })
   }
 
+  //icon functions
+  function editEntry(event) {
+    console.log(event.target.value)
+  }
+
   return (
     <div className='main'>
       <div className='forms'>
@@ -117,7 +123,7 @@ function App() {
         <EducationInfo
           changeHandler={edChangeHandler}
           submitHandler={edSubmitHandler}
-          edFormStatus={edFormStatus} 
+          edFormStatus={edFormStatus}
         />
         <ExperienceInfo
           changeHandler={experienceChangeHandler}
@@ -125,12 +131,13 @@ function App() {
           experienceFormStatus={experienceFormStatus} 
         />
         </div>
-        <div className='vl' />
+        {/*<div className='vl' />*/}
         <div className='outputs'>
-          <h1>Resume</h1>
-          <div className='hl' />
           {submitted ? <BasicInfoOutput personInfo={personInfo} /> : null }
-          <EducationInfoOutput educationInfo={educationInfo} />
+          <EducationInfoOutput 
+            educationInfo={educationInfo}
+            editEntry={editEntry}
+          />
           <ExperienceInfoOutput experienceInfo={experienceInfo} />
         </div>
     </div>

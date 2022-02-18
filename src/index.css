@@ -1,23 +1,50 @@
 .main {
-  display: flex;
-  gap: 5vw;
+  display: grid;
+  grid-template-columns: 49vw 49vw;
+}
+
+.inputs {
+  display: grid;
+  grid-template-columns: 10vw 10vw 10vw 10vw;
+  padding: 40px;
+  border: 1px solid black;
+  margin-right: 1vw;
+  position: relative;
+}
+
+.inputs > h3 {
+  align-self: center;
 }
 
 .basicInfoOutput {
-  width: 50vw;
-  display: flex;
-  justify-content: space-between;
+  text-align: center;
   padding: 10px;
+  line-height: 0.5;
+}
+
+.submitButton {
+  height: 40px;
+  width: 100px;
+  align-self: center;
+  position: absolute;
+  top: 20px;
+  right: 5%;
 }
 
 .outputs {
   padding: 5px;
+  border: 1px solid black;
+}
+
+.outputs > h1 {
+  align-self: center;
+  text-align: center;
 }
 
 .dates {
   display: flex;
   justify-content: space-between;
-  width: 35vw;
+  width: 18vw;
 }
 
 .forms {
@@ -39,15 +66,50 @@ h1 {
 .schoolEntry {
   line-height: 0.5;
   padding: 20px;
+  position: relative;
+}
+
+.icons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.icon:hover {
+  color: rgba(145, 141, 141, 0.979)
 }
 
 .schoolEntry:hover {
   background-color: rgba(255, 255, 0, 0.205);
 }
 
+.experienceEntry:hover {
+  background-color: rgba(255, 255, 0, 0.205);
+}
+
+.experienceEntry {
+  line-height: 0.5;
+  padding: 20px;
+}
+
+.experienceEntry > p {
+  line-height: 1;
+}
+
+.experienceGrouperMain {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.experienceGrouperIcons {
+  display: flex;
+  gap: 10px;
+}
+
 .educationInfoOutput {
   display: flex;
-  gap: 50px;
+  justify-content: space-around;
 }
 
 textarea {
@@ -56,6 +118,17 @@ textarea {
 
 @media only screen and (max-width: 600px) {
   .main {
+    display: flex;
     flex-direction: column;
+  }
+
+  .inputs {
+    display: flex;
+    width: 75vw;
+    flex-direction: column;
+  }
+
+  .submitButton {
+    position: relative;
   }
 }

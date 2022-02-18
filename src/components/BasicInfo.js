@@ -42,8 +42,9 @@ export default function BasicInfo(props) {
                         value={props.formStatus.email.value}
                 />
                 <br /><br />
-                <button>{props.submitted ? "Edit" : "Confirm"}</button>
             </form>
+            <div />
+            <button className="submitButton" onClick={props.submitHandler}>{props.submitted ? "Edit" : "Confirm"}</button>
         </div>
     )
 }

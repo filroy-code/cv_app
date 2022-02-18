@@ -53,8 +53,9 @@ export default function ExperienceInfo(props) {
                         cols="45"
                 />
                 <br /><br />
-                <button>{"Add Experience"}</button>
             </form>
+            <div />
+            <button className="submitButton" onClick={props.submitHandler}>{"Add Experience"}</button>
         </div>
     )
 }

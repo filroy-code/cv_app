@@ -1,4 +1,6 @@
 import React from "react"
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 export default function EducationInfoOutput(props) {
 
@@ -15,6 +17,10 @@ export default function EducationInfoOutput(props) {
     const educationList = props.educationInfo.map(x => {
         return(
             <div className="schoolEntry" key={x.id}>
+                <div className="icons">
+                <EditIcon fontSize="small" className="icon" onClick={props.editEntry}/>
+                <DeleteIcon fontSize="small" className="icon" onClick={props.editEntry}/>
+                </div>
                 <h3>{x.school}</h3>
                 <h4>{x.diploma}</h4>
                 <h5>{x.dateStarted} - {x.dateFinished}</h5>
