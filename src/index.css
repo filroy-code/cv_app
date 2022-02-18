@@ -35,3 +35,27 @@
 h1 {
   align-self: center;
 }
+
+.schoolEntry {
+  line-height: 0.5;
+  padding: 20px;
+}
+
+.schoolEntry:hover {
+  background-color: rgba(255, 255, 0, 0.205);
+}
+
+.educationInfoOutput {
+  display: flex;
+  gap: 50px;
+}
+
+textarea {
+  vertical-align: top;
+}
+
+@media only screen and (max-width: 600px) {
+  .main {
+    flex-direction: column;
+  }
+}

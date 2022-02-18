@@ -1,8 +1,11 @@
 import './App.css';
 import BasicInfo from './components/BasicInfo'
 import EducationInfo from './components/EducationInfo'
+import ExperienceInfo from './components/ExperienceInfo'
 import BasicInfoOutput from './components/BasicInfoOutput'
+import EducationInfoOutput from './components/EducationInfoOutput'
 import React from 'react'
+import { nanoid } from 'nanoid'
 
 function App() {
 
@@ -24,7 +27,6 @@ function App() {
   function submitHandler(event) {
       event.preventDefault()
       setPersonInfo(formStatus)
-      console.log(personInfo)
       toggle(!submitted)
   }
 
@@ -36,19 +38,19 @@ function App() {
   })}
 
 //education info state and functions
-  const [educationInfo, setEducationInfo] = React.useState({
-    school: "",
-    dateStarted: "",
-    dateFinished: "",
-    diploma: "",
-    id: ""
-  })
+  const [educationInfo, setEducationInfo] = React.useState([])
 
   function edSubmitHandler(event) {
     event.preventDefault()
-    setEducationInfo(formStatus)
-    console.log(personInfo)
-    toggle(!submitted)
+    setEducationInfo(prevEdInfo => [...prevEdInfo, edFormStatus])
+    console.log(educationInfo)
+    setEdFormStatus({
+      school: "",
+      dateStarted: "",
+      dateFinished: "",
+      diploma: "",
+      id: nanoid()
+  })
   }
 
   const [edFormStatus, setEdFormStatus] = React.useState({
@@ -56,8 +58,49 @@ function App() {
     dateStarted: "",
     dateFinished: "",
     diploma: "",
-    id: ""
-})
+    id: nanoid()
+  })
+
+  function edChangeHandler(event) {
+    const {name, value} = event.target
+    setEdFormStatus(prevStatus => {
+        return ({...prevStatus, 
+        [name]: value })
+  })
+  }
+
+  //experience info state and functions
+  const [experienceInfo, setExperienceInfo] = React.useState([])
+
+  function experienceSubmitHandler(event) {
+    event.preventDefault()
+    setExperienceInfo(prevExperienceInfo => [...prevExperienceInfo, experienceFormStatus])
+    setExperienceFormStatus({
+      employer: "",
+      jobTitle: "",
+      dateStarted: "",
+      dateFinished: "",
+      description: "",
+      id: nanoid()
+  })
+  }
+
+  const [experienceFormStatus, setExperienceFormStatus] = React.useState({
+    employer: "",
+    jobTitle: "",
+    dateStarted: "",
+    dateFinished: "",
+    description: "",
+    id: nanoid()
+  })
+
+  function experienceChangeHandler(event) {
+    const {name, value} = event.target
+    setExperienceFormStatus(prevStatus => {
+        return ({...prevStatus, 
+        [name]: value })
+  })
+  }
 
   return (
     <div className='main'>
@@ -66,14 +109,25 @@ function App() {
           submitted={submitted}
           submitHandler={submitHandler}
           changeHandler={changeHandler}
+          formStatus={formStatus}
         />
-        <EducationInfo />
+        <EducationInfo
+          changeHandler={edChangeHandler}
+          submitHandler={edSubmitHandler}
+          edFormStatus={edFormStatus} 
+        />
+        <ExperienceInfo
+          changeHandler={experienceChangeHandler}
+          submitHandler={experienceSubmitHandler}
+          experienceFormStatus={experienceFormStatus} 
+        />
         </div>
         <div className='vl' />
         <div className='outputs'>
           <h1>Resume</h1>
           <div className='hl' />
           {submitted ? <BasicInfoOutput personInfo={personInfo} /> : null }
+          <EducationInfoOutput educationInfo={educationInfo} />
         </div>
     </div>
   );

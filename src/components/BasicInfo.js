@@ -11,6 +11,7 @@ export default function BasicInfo(props) {
                         disabled={props.submitted ? "disabled" : ""}
                         onChange={props.changeHandler}
                         placeholder="First Name"
+                        value={props.formStatus.firstName.value}
                 />
                 <br />
                 <input  type="text"
@@ -18,6 +19,7 @@ export default function BasicInfo(props) {
                         onChange={props.changeHandler}
                         disabled={props.submitted ? "disabled" : ""}
                         placeholder="Last Name"
+                        value={props.formStatus.lastName.value}
                 />
                 <br />
                 <input  type="email"
@@ -25,6 +27,7 @@ export default function BasicInfo(props) {
                         onChange={props.changeHandler}
                         disabled={props.submitted ? "disabled" : ""}
                         placeholder="Email"
+                        value={props.formStatus.email.value}
                 />
                 <br />
                 <button>{props.submitted ? "Edit" : "Confirm"}</button>
