@@ -1,3 +1,37 @@
-.hello {
-  color: red;
+.main {
+  display: flex;
+  gap: 5vw;
+}
+
+.basicInfoOutput {
+  width: 50vw;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.outputs {
+  padding: 5px;
+}
+
+.dates {
+  display: flex;
+  justify-content: space-between;
+  width: 35vw;
+}
+
+.forms {
+  width: 50vw;
+}
+
+.vl {
+  border: 2px dotted black;
+}
+
+.hl {
+  border: 2px dotted black;
+}
+
+h1 {
+  align-self: center;
 }
