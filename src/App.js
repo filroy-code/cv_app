@@ -113,10 +113,15 @@ function App() {
     setEducationInfo(filteredEducation)
   }
 
+  const [pinged, togglePing] = React.useState(false)
+
   function editEntry(event) {
     let targetBox = event.target.parentElement.parentElement.id
-    let filteredEducation = educationInfo.filter(item => item.id !== targetBox)
-    console.log(filteredEducation)
+    let chosenEducation = educationInfo.filter(item => item.id === targetBox)
+    setEdFormStatus({...chosenEducation[0]})
+    togglePing(!pinged)
+    //let filteredEducation = educationInfo.filter(item => item.id !== targetBox)
+    //setEducationInfo(filteredEducation)
   }
 
   return (
@@ -132,6 +137,7 @@ function App() {
           changeHandler={edChangeHandler}
           submitHandler={edSubmitHandler}
           edFormStatus={edFormStatus}
+          pinged={pinged}
         />
         <ExperienceInfo
           changeHandler={experienceChangeHandler}

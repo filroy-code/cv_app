@@ -3,7 +3,7 @@ import React from "react"
 export default function EducationInfo(props) {
 
     return (
-        <div className="inputs">
+        <div className={props.pinged ? "inputs educationForm pinged" : "inputs educationForm"}>
             <h3>Education</h3>
             <form onSubmit={props.submitHandler}>
                 <label htmlFor="school">Institution: </label>
@@ -11,7 +11,7 @@ export default function EducationInfo(props) {
                         name="school"
                         onChange={props.changeHandler}
                         placeholder="(e.g. University of Toronto)"
-                        value={props.edFormStatus.school.value}
+                        value={props.edFormStatus.school}
                 />
                 <br /><br />
                 <div className="dates">
@@ -22,7 +22,7 @@ export default function EducationInfo(props) {
                             name="dateStarted"
                             onChange={props.changeHandler}
                             placeholder="Date Started"
-                            value={props.edFormStatus.dateStarted.value}
+                            value={props.edFormStatus.dateStarted}
                     />
                     </div>
                     <div>
@@ -31,7 +31,7 @@ export default function EducationInfo(props) {
                         name="dateFinished"
                         onChange={props.changeHandler}
                         placeholder="Date Finished"
-                        value={props.edFormStatus.dateFinished.value}
+                        value={props.edFormStatus.dateFinished}
                     />
                     </div>
                 </div>
@@ -41,7 +41,7 @@ export default function EducationInfo(props) {
                         name="diploma"
                         onChange={props.changeHandler}
                         placeholder="(e.g. Bachelor of Science)"
-                        value={props.edFormStatus.diploma.value}
+                        value={props.edFormStatus.diploma}
                 />
                 <br /><br />
             </form>
