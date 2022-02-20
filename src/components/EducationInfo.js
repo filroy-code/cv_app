@@ -3,7 +3,7 @@ import React from "react"
 export default function EducationInfo(props) {
 
     return (
-        <div className={props.pinged ? "inputs educationForm pinged" : "inputs educationForm"}>
+        <div className={props.editing ? "inputs educationForm editing" : "inputs educationForm"}>
             <h3>Education</h3>
             <form onSubmit={props.submitHandler}>
                 <label htmlFor="school">Institution: </label>
@@ -46,7 +46,7 @@ export default function EducationInfo(props) {
                 <br /><br />
             </form>
             <div />
-            <button onClick={props.submitHandler} className="submitButton">{"Add Education"}</button>
+            <button onClick={props.editing ? props.submitChanges : props.submitHandler} className="submitButton">{props.editing ? "Submit Changes" : "Add Education"}</button>
         </div>
     )
 }

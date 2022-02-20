@@ -41,6 +41,8 @@ function App() {
           [name]: value })
   })}
 
+  React.useEffect( () => {setPersonInfo(formStatus)}, [formStatus])
+
 //education info state and functions
   const [educationInfo, setEducationInfo] = React.useState([])
 
@@ -113,13 +115,36 @@ function App() {
     setEducationInfo(filteredEducation)
   }
 
-  const [pinged, togglePing] = React.useState(false)
+  const [editing, setEditing] = React.useState(false)
 
   function editEntry(event) {
     let targetBox = event.target.parentElement.parentElement.id
     let chosenEducation = educationInfo.filter(item => item.id === targetBox)
+    for (let i = 0; i < educationInfo.length; i++) {
+      if (targetBox === educationInfo[i].id) {setEditing(i)}
+    }
     setEdFormStatus({...chosenEducation[0]})
-    togglePing(!pinged)
+    //let filteredEducation = educationInfo.filter(item => item.id !== targetBox)
+    //setEducationInfo(filteredEducation)
+  }
+
+  function submitChanges() {
+    setEditing(false)
+  }
+
+  function experienceDeleteEntry(event) {
+    let targetBox = event.target.parentElement.parentElement.parentElement.id
+    let filteredExperience = experienceInfo.filter(item => item.id !== targetBox)
+    setExperienceInfo(filteredExperience)
+  }
+
+  const [experiencePinged, toggleExperiencePing] = React.useState(false)
+
+  function experienceEditEntry(event) {
+    let targetBox = event.target.parentElement.parentElement.parentElement.id
+    let chosenExperience = experienceInfo.filter(item => item.id === targetBox)
+    setExperienceFormStatus({...chosenExperience[0]})
+    toggleExperiencePing(!experiencePinged)
     //let filteredEducation = educationInfo.filter(item => item.id !== targetBox)
     //setEducationInfo(filteredEducation)
   }
@@ -137,7 +162,8 @@ function App() {
           changeHandler={edChangeHandler}
           submitHandler={edSubmitHandler}
           edFormStatus={edFormStatus}
-          pinged={pinged}
+          editing={editing}
+          submitChanges={submitChanges}
         />
         <ExperienceInfo
           changeHandler={experienceChangeHandler}
@@ -147,13 +173,16 @@ function App() {
         </div>
         {/*<div className='vl' />*/}
         <div className='outputs'>
-          {submitted ? <BasicInfoOutput personInfo={personInfo} /> : null }
+          <BasicInfoOutput personInfo={personInfo} />
           <EducationInfoOutput 
             educationInfo={educationInfo}
             deleteEntry={deleteEntry}
             editEntry={editEntry}
+            editing={editing}
           />
-          <ExperienceInfoOutput experienceInfo={experienceInfo} />
+          <ExperienceInfoOutput experienceInfo={experienceInfo}
+            deleteEntry={experienceDeleteEntry}
+            editEntry={experienceEditEntry} />
         </div>
     </div>
   );

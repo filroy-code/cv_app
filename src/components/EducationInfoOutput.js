@@ -16,7 +16,7 @@ export default function EducationInfoOutput(props) {
     })} */
     const educationList = props.educationInfo.map(x => {
         return(
-            <div className="schoolEntry" key={x.id} id={x.id}>
+            <div className={props.editing ? "schoolEntry" : "schoolEntry"} key={x.id} id={x.id}>
                 <div className="icons">
                 <button onClick={props.editEntry}><EditIcon fontSize="small" className="icon" /></button>
                 <button onClick={props.deleteEntry}><DeleteIcon fontSize="small" className="icon"/></button>

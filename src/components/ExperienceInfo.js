@@ -11,7 +11,7 @@ export default function ExperienceInfo(props) {
                         name="employer"
                         onChange={props.changeHandler}
                         placeholder="Employer"
-                        value={props.experienceFormStatus.employer.value}
+                        value={props.experienceFormStatus.employer}
                 />
                 <br /><br />
                 <label htmlFor="jobTitle">Title: </label>
@@ -19,7 +19,7 @@ export default function ExperienceInfo(props) {
                         name="jobTitle"
                         onChange={props.changeHandler}
                         placeholder="(e.g. Regional Manager)"
-                        value={props.experienceFormStatus.jobTitle.value}
+                        value={props.experienceFormStatus.jobTitle}
                 />
                 <br /><br />
                 <div className="dates">
@@ -27,19 +27,19 @@ export default function ExperienceInfo(props) {
                     <label htmlFor="workDateStarted">Date Started: </label>
                     <input  className="workDateStarted" 
                             type="date"
-                            name="workDateStarted"
+                            name="dateStarted"
                             onChange={props.changeHandler}
                             placeholder="Date Started"
-                            value={props.experienceFormStatus.dateStarted.value}
+                            value={props.experienceFormStatus.dateStarted}
                     />
                     </div>
                     <div>
                     <label htmlFor="dateFinished">Date Finished: </label>
                     <input  type="date"
-                        name="workDateFinished"
+                        name="dateFinished"
                         onChange={props.changeHandler}
                         placeholder="Date Finished"
-                        value={props.experienceFormStatus.dateFinished.value}
+                        value={props.experienceFormStatus.dateFinished}
                     />
                     </div>
                 </div>
@@ -49,7 +49,7 @@ export default function ExperienceInfo(props) {
                         name="description"
                         onChange={props.changeHandler}
                         placeholder="List any responsibilities, achievements, etc."
-                        value={props.experienceFormStatus.description.value}
+                        value={props.experienceFormStatus.description}
                         cols="45"
                 />
                 <br /><br />

@@ -16,15 +16,15 @@ export default function ExperienceInfoOutput(props) {
     })} */
     const experienceList = props.experienceInfo.map(x => {
         return(
-            <div className="experienceEntry" key={x.id}>
+            <div className="experienceEntry" key={x.id} id={x.id}>
                 <div className="experienceGrouperMain">
                     <div>
-                        <h3>{x.employer} - {x.jobTitle}</h3>
+                        <h3>{x.employer} - <em>{x.jobTitle}</em></h3>
                         <h4>{x.workDateStarted} - {x.workDateFinished}</h4>
                     </div>
                     <div className="experienceGrouperIcons">
-                        <EditIcon fontSize="small" className="icon" onClick={console.log("hello")}/>
-                        <DeleteIcon fontSize="small" className="icon" onClick={console.log("hello")}/>
+                        <button onClick={props.editEntry}><EditIcon fontSize="small" className="icon" /></button>
+                        <button onClick={props.deleteEntry}><DeleteIcon fontSize="small" className="icon" /></button>
                     </div>
                 </div>
                 <p>{x.description}</p>

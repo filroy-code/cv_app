@@ -24,15 +24,6 @@ export default function BasicInfo(props) {
                         value={props.formStatus.lastName.value}
                 />
                 <br /><br />
-                <label htmlFor="phoneNumber">Phone Number: </label>
-                <input  type="tel"
-                        name="phoneNumber"
-                        onChange={props.changeHandler}
-                        disabled={props.submitted ? "disabled" : ""}
-                        placeholder="(555)-555-5555"
-                        value={props.formStatus.phoneNumber.value}
-                />
-                <br /><br />
                 <label htmlFor="email">Email: </label>
                 <input  type="email"
                         name="email"
@@ -40,6 +31,15 @@ export default function BasicInfo(props) {
                         disabled={props.submitted ? "disabled" : ""}
                         placeholder="Email"
                         value={props.formStatus.email.value}
+                />
+                <br /><br />
+                <label htmlFor="phoneNumber">Phone Number: </label>
+                <input  type="tel"
+                        name="phoneNumber"
+                        onChange={props.changeHandler}
+                        disabled={props.submitted ? "disabled" : ""}
+                        placeholder="(555)-555-5555"
+                        value={props.formStatus.phoneNumber.value}
                 />
                 <br /><br />
             </form>
