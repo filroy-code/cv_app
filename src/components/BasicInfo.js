@@ -12,7 +12,7 @@ export default function BasicInfo(props) {
                         disabled={props.submitted ? "disabled" : ""}
                         onChange={props.changeHandler}
                         placeholder="First Name"
-                        value={props.formStatus.firstName.value}
+                        value={props.formStatus.firstName}
                 />
                 <br /><br />
                 <label htmlFor="lastName">Last Name: </label>
@@ -21,7 +21,7 @@ export default function BasicInfo(props) {
                         onChange={props.changeHandler}
                         disabled={props.submitted ? "disabled" : ""}
                         placeholder="Last Name"
-                        value={props.formStatus.lastName.value}
+                        value={props.formStatus.lastName}
                 />
                 <br /><br />
                 <label htmlFor="email">Email: </label>
@@ -30,7 +30,7 @@ export default function BasicInfo(props) {
                         onChange={props.changeHandler}
                         disabled={props.submitted ? "disabled" : ""}
                         placeholder="Email"
-                        value={props.formStatus.email.value}
+                        value={props.formStatus.email}
                 />
                 <br /><br />
                 <label htmlFor="phoneNumber">Phone Number: </label>
@@ -39,7 +39,7 @@ export default function BasicInfo(props) {
                         onChange={props.changeHandler}
                         disabled={props.submitted ? "disabled" : ""}
                         placeholder="(555)-555-5555"
-                        value={props.formStatus.phoneNumber.value}
+                        value={props.formStatus.phoneNumber}
                 />
                 <br /><br />
             </form>
