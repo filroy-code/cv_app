@@ -65,7 +65,6 @@ function App() {
   function edSubmitHandler(event) {
     event.preventDefault()
     setEducationInfo(prevEdInfo => [...prevEdInfo, edFormStatus])
-    console.log(educationInfo)
     setEdFormStatus({
       school: "",
       dateStarted: "",
@@ -149,7 +148,7 @@ function App() {
     let targetBox = event.target.parentElement.parentElement.id
     let filteredEducation = educationInfo.filter(item => item.id !== targetBox)
     setEducationInfo(filteredEducation)
-    setEditing(false)
+    submitChanges();
   }
 
   const [editing, setEditing] = React.useState(false)
@@ -182,7 +181,7 @@ function App() {
     let targetBox = event.target.parentElement.parentElement.parentElement.id
     let filteredExperience = experienceInfo.filter(item => item.id !== targetBox)
     setExperienceInfo(filteredExperience)
-    setExperienceEditing(false)
+    experienceSubmitChanges();
   }
 
   function experienceEditEntry(event) {
