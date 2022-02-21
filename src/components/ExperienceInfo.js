@@ -3,7 +3,7 @@ import React from "react"
 export default function ExperienceInfo(props) {
 
     return (
-        <div className="inputs">
+        <div className={props.editing ? "inputs experienceForm experienceEditing" : "inputs experienceForm"}>
             <h3>Experience</h3>
             <form onSubmit={props.submitHandler}>
                 <label htmlFor="employer">Employer: </label>
@@ -50,12 +50,12 @@ export default function ExperienceInfo(props) {
                         onChange={props.changeHandler}
                         placeholder="List any responsibilities, achievements, etc."
                         value={props.experienceFormStatus.description}
-                        cols="45"
+                        rows="8"
                 />
                 <br /><br />
             </form>
             <div />
-            <button className="submitButton" onClick={props.submitHandler}>{"Add Experience"}</button>
+            <button className="submitButton" onClick={ props.editing ? props.submitChanges : props.submitHandler}>{props.editing ? "Submit Changes" : "Add Experience"}</button>
         </div>
     )
 }

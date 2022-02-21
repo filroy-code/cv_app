@@ -43,6 +43,7 @@ function App() {
 
   React.useEffect( () => {setPersonInfo(formStatus)}, [formStatus])
 
+
 //education info state and functions
   const [educationInfo, setEducationInfo] = React.useState([])
 
@@ -73,7 +74,8 @@ function App() {
         return ({...prevStatus, 
         [name]: value })
   })
-  }
+}
+
 
   //experience info state and functions
   const [experienceInfo, setExperienceInfo] = React.useState([])
@@ -108,7 +110,7 @@ function App() {
   })
   }
 
-  //icon functions
+    //education editing and deleting functions
   function deleteEntry(event) {
     let targetBox = event.target.parentElement.parentElement.id
     let filteredEducation = educationInfo.filter(item => item.id !== targetBox)
@@ -117,36 +119,52 @@ function App() {
 
   const [editing, setEditing] = React.useState(false)
 
+  React.useEffect(
+    () =>  editing ? setEducationInfo(educationInfo.map((item, num) => {
+      if (num === editing - 1) return {...edFormStatus}; else return {...item}
+    })
+    ) : educationInfo, [editing, edFormStatus])
+    
   function editEntry(event) {
     let targetBox = event.target.parentElement.parentElement.id
     let chosenEducation = educationInfo.filter(item => item.id === targetBox)
     for (let i = 0; i < educationInfo.length; i++) {
-      if (targetBox === educationInfo[i].id) {setEditing(i)}
+      if (targetBox === educationInfo[i].id) {setEditing(i + 1)}
     }
     setEdFormStatus({...chosenEducation[0]})
-    //let filteredEducation = educationInfo.filter(item => item.id !== targetBox)
-    //setEducationInfo(filteredEducation)
   }
 
   function submitChanges() {
     setEditing(false)
   }
 
+
+  //experience editing and deleting functions
   function experienceDeleteEntry(event) {
     let targetBox = event.target.parentElement.parentElement.parentElement.id
     let filteredExperience = experienceInfo.filter(item => item.id !== targetBox)
     setExperienceInfo(filteredExperience)
   }
 
-  const [experiencePinged, toggleExperiencePing] = React.useState(false)
-
   function experienceEditEntry(event) {
     let targetBox = event.target.parentElement.parentElement.parentElement.id
     let chosenExperience = experienceInfo.filter(item => item.id === targetBox)
+    for (let i = 0; i < experienceInfo.length; i++) {
+      if (targetBox === experienceInfo[i].id) {setExperienceEditing(i + 1)}
+    }
     setExperienceFormStatus({...chosenExperience[0]})
-    toggleExperiencePing(!experiencePinged)
-    //let filteredEducation = educationInfo.filter(item => item.id !== targetBox)
-    //setEducationInfo(filteredEducation)
+  }
+
+  const [experienceEditing, setExperienceEditing] = React.useState(false)
+
+  React.useEffect(
+    () =>  experienceEditing ? setExperienceInfo(experienceInfo.map((item, num) => {
+      if (num === experienceEditing - 1) return {...experienceFormStatus}; else return {...item}
+    })
+    ) : experienceInfo, [experienceEditing, experienceFormStatus])
+
+  function experienceSubmitChanges() {
+    setExperienceEditing(false)
   }
 
   return (
@@ -168,21 +186,27 @@ function App() {
         <ExperienceInfo
           changeHandler={experienceChangeHandler}
           submitHandler={experienceSubmitHandler}
-          experienceFormStatus={experienceFormStatus} 
+          experienceFormStatus={experienceFormStatus}
+          editing={experienceEditing}
+          submitChanges={experienceSubmitChanges}
         />
         </div>
-        {/*<div className='vl' />*/}
         <div className='outputs'>
-          <BasicInfoOutput personInfo={personInfo} />
+          <BasicInfoOutput 
+          personInfo={personInfo}
+          submitted={submitted} 
+          />
           <EducationInfoOutput 
             educationInfo={educationInfo}
             deleteEntry={deleteEntry}
             editEntry={editEntry}
             editing={editing}
           />
-          <ExperienceInfoOutput experienceInfo={experienceInfo}
+          <ExperienceInfoOutput 
+            experienceInfo={experienceInfo}
             deleteEntry={experienceDeleteEntry}
-            editEntry={experienceEditEntry} />
+            editEntry={experienceEditEntry}
+            editing={experienceEditing} />
         </div>
     </div>
   );

@@ -21,6 +21,11 @@ input {
   transition: background-color 0.6s ease-out;
 }
 
+.experienceForm {
+  background-color: white;
+  transition: background-color 0.6s ease-out;
+}
+
 .inputs > h3 {
   align-self: center;
 }
@@ -30,6 +35,10 @@ input {
   padding: 10px;
   line-height: 0.5;
   margin-bottom: -10px;
+  background-color: white;
+  transition: background-color 0.6s ease-out;
+  position: relative;
+  z-index: 1;
 }
 
 .submitButton {
@@ -42,7 +51,6 @@ input {
 }
 
 .outputs {
-  padding: 5px;
   border: 1px solid black;
 }
 
@@ -76,6 +84,7 @@ h1 {
 .schoolEntry {
   line-height: 0.5;
   padding: 20px;
+  padding-top: 25px;
   position: relative;
   background-color: white;
   transition: background-color 0.6s ease-out;
@@ -106,10 +115,13 @@ h1 {
 
 .experienceEntry {
   padding: 13px 20px;
+  background-color: white;
+  transition: background-color 0.6s ease-out;
 }
 
 .experienceEntry > p {
   line-height: 1;
+  margin-top: 0px;
 }
 
 .experienceGrouperMain {
@@ -131,10 +143,23 @@ h1 {
 
 textarea {
   vertical-align: top;
+  width: 25vw;
 }
 
 .editing {
-  background-color: rgb(82, 224, 54);
+  background-color: rgb(177, 235, 165);
+}
+
+.editing:hover {
+  background-color: rgb(177, 235, 165);
+}
+
+.experienceEditing {
+  background-color: rgb(144, 201, 133);
+}
+
+.experienceEditing:hover {
+  background-color: rgb(144, 201, 133);
 }
 
 @media only screen and (max-width: 600px) {
@@ -145,11 +170,23 @@ textarea {
 
   .inputs {
     display: flex;
-    width: 75vw;
+    width: 74vw;
     flex-direction: column;
   }
 
   .submitButton {
     position: relative;
+  }
+
+  textarea {
+    width: 45vw;
+  }
+}
+
+@media only screen and (max-width: 933px) {
+
+  .inputs {
+    display: flex;
+    flex-direction: column;
   }
 }
