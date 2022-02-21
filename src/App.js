@@ -171,6 +171,9 @@ function App() {
 
   function submitChanges() {
     setEditing(false)
+    setEdFormStatus({...edFormStatus,
+      id: nanoid()
+    })
   }
 
 
@@ -201,6 +204,9 @@ function App() {
 
   function experienceSubmitChanges() {
     setExperienceEditing(false)
+    setExperienceFormStatus({...experienceFormStatus,
+      id: nanoid()
+    })
   }
 
   return (

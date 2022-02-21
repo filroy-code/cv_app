@@ -3,7 +3,7 @@ import React from "react"
 export default function BasicInfo(props) {
 
     return (
-        <div className={props.submitted ? "inputs disabled" : "inputs"}>
+        <div className={props.submitted ? "inputs disabled basicInfoInput" : "inputs basicInfoInput"}>
             <h3>Basic Info</h3>
             <form onSubmit={props.submitHandler}>
             <label htmlFor="firstName">First Name: </label>

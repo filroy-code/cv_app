@@ -13,7 +13,7 @@ export default function ExperienceInfoOutput(props) {
                         <h4>{x.dateStarted} - {x.dateFinished}</h4>
                     </div>
                     <div className="experienceGrouperIcons">
-                        <button onClick={props.editEntry}><EditIcon fontSize="small" className="icon" /></button>
+                        <button onClick={num === (props.editing - 1) ? props.submitChanges : props.editEntry}><EditIcon fontSize="small" className="icon" /></button>
                         <button onClick={num === (props.editing - 1) ? props.submitChanges : props.deleteEntry}><DeleteIcon fontSize="small" className="icon" /></button>
                     </div>
                 </div>
