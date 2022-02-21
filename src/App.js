@@ -13,17 +13,17 @@ function App() {
 
 //basic info state and functions
   const [personInfo, setPersonInfo] = React.useState({
-    firstName: "",
-    lastName: "",
-    phoneNumber: "",
-    email: ""
+    firstName: "Filip",
+    lastName: "Andrejuk",
+    phoneNumber: "(555)-555-5555",
+    email: "filip_andrejuk@hotmail.com"
 })
 
   const [formStatus, setFormStatus] = React.useState({
-      firstName: "",
-      lastName: "",
-      phoneNumber: "",
-      email: ""
+      firstName: "Filip",
+      lastName: "Andrejuk",
+      phoneNumber: "(555)-555-5555",
+      email: "filip_andrejuk@hotmail.com"
   })
 
   const [submitted, toggle] = React.useState(false)
@@ -45,7 +45,22 @@ function App() {
 
 
 //education info state and functions
-  const [educationInfo, setEducationInfo] = React.useState([])
+  const [educationInfo, setEducationInfo] = React.useState([
+    {
+    school: "University of Toronto",
+    dateStarted: "2012-09-01",
+    dateFinished: "2012-04-30",
+    diploma: "Bachelor of Kinesiology",
+    id: nanoid()
+    },
+    {
+      school: "York University",
+      dateStarted: "2016-09-01",
+      dateFinished: "2018-04-30",
+      diploma: "Bachelor of Education",
+      id: nanoid()
+    }
+  ])
 
   function edSubmitHandler(event) {
     event.preventDefault()
@@ -72,13 +87,31 @@ function App() {
     const {name, value} = event.target
     setEdFormStatus(prevStatus => {
         return ({...prevStatus, 
-        [name]: value })
+        [name]: value,
+        id: nanoid() })
   })
-}
+  }
 
 
   //experience info state and functions
-  const [experienceInfo, setExperienceInfo] = React.useState([])
+  const [experienceInfo, setExperienceInfo] = React.useState([
+    {
+      employer: "Self-Employed",
+      jobTitle: "Freelance Full-Stack Developer",
+      dateStarted: "2021-12-15",
+      dateFinished: "Present",
+      description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+      id: nanoid()
+    },
+    {
+      employer: "Toronto District School Board",
+      jobTitle: "Science & Physical Education Teacher",
+      dateStarted: "2018-09-01",
+      dateFinished: "Present",
+      description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+      id: nanoid()
+    } 
+  ])
 
   function experienceSubmitHandler(event) {
     event.preventDefault()
@@ -106,7 +139,8 @@ function App() {
     const {name, value} = event.target
     setExperienceFormStatus(prevStatus => {
         return ({...prevStatus, 
-        [name]: value })
+        [name]: value,
+        id: nanoid() })
   })
   }
 
@@ -115,6 +149,7 @@ function App() {
     let targetBox = event.target.parentElement.parentElement.id
     let filteredEducation = educationInfo.filter(item => item.id !== targetBox)
     setEducationInfo(filteredEducation)
+    setEditing(false)
   }
 
   const [editing, setEditing] = React.useState(false)
@@ -144,6 +179,7 @@ function App() {
     let targetBox = event.target.parentElement.parentElement.parentElement.id
     let filteredExperience = experienceInfo.filter(item => item.id !== targetBox)
     setExperienceInfo(filteredExperience)
+    setExperienceEditing(false)
   }
 
   function experienceEditEntry(event) {
@@ -161,7 +197,7 @@ function App() {
     () =>  experienceEditing ? setExperienceInfo(experienceInfo.map((item, num) => {
       if (num === experienceEditing - 1) return {...experienceFormStatus}; else return {...item}
     })
-    ) : experienceInfo, [experienceEditing, experienceFormStatus])
+    ) : experienceInfo, [experienceEditing, experienceFormStatus, experienceInfo.length])
 
   function experienceSubmitChanges() {
     setExperienceEditing(false)
@@ -201,12 +237,14 @@ function App() {
             deleteEntry={deleteEntry}
             editEntry={editEntry}
             editing={editing}
+            submitChanges={submitChanges}
           />
           <ExperienceInfoOutput 
             experienceInfo={experienceInfo}
             deleteEntry={experienceDeleteEntry}
             editEntry={experienceEditEntry}
-            editing={experienceEditing} />
+            editing={experienceEditing}
+            submitChanges={experienceSubmitChanges} />
         </div>
     </div>
   );
