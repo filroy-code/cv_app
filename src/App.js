@@ -49,7 +49,7 @@ function App() {
     {
     school: "University of Toronto",
     dateStarted: "2012-09-01",
-    dateFinished: "2012-04-30",
+    dateFinished: "2016-04-30",
     diploma: "Bachelor of Kinesiology",
     id: nanoid()
     },
